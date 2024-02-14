@@ -74,4 +74,4 @@ summary(iris_target_category)
 
 Build a github repository to store your homework assignments.  Share the link in this file.  
 
-*STUDENT INPUT*
+https://github.com/ethanrenrut/STOR390hw
