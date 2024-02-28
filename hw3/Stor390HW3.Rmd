@@ -95,8 +95,7 @@ Overfitting might be an issue, because for a very high error cost then we might 
 
 Create a confusion matrix by using this svm to predict on the current testing partition.  Comment on the confusion matrix.  Is there any disparity in our classification results?    
 
-```{r, eval = FALSE}
-#remove eval = FALSE in above
+```{r}
 
 table(true=dat[-train,"y"], pred=predict(svmfit, newdata=dat[-train,]))
 ```
@@ -128,7 +127,7 @@ tune.out = tune(svm, y~., data = dat[train,], ranges = list(cost = 10^(-1:3), ga
 I will take `tune.out` and use the best model according to error rate to test on our data.  I will report a confusion matrix corresponding to the 100 predictions.  
 
 
-```{r, eval = FALSE}
+```{r}
 table(true=dat[-train,"y"], pred=predict(tune.out$best.model, newdata=dat[-train,]))
 
 ```
