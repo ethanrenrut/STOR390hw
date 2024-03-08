@@ -2,9 +2,10 @@
 title: "HW 4"
 author: "Ethan Turner"
 date: "03/06/2024"
-output: 
+output:
   html_document:
-    number_sections: true
+    number_sections: yes
+  word_document: default
 ---
 
 This homework is designed to give you practice fitting a logistic regression and working with statistical/philosophical measures of fairness.  We will work with the `titanic` dataset which we have previously seen in class in connection to decision trees.  
@@ -166,7 +167,6 @@ Now let's see if our model is *fair* across this explanatory variable.  Calculat
 (4+59+4+93)/(4+59+4+93+15+2+4+28)
 
 
-#Disparate impact:
 #Men predicted correctly (taken from confusion matrix):
 97/(97+32)
 
@@ -174,51 +174,77 @@ Now let's see if our model is *fair* across this explanatory variable.  Calculat
 #Women predicted correctly:
 63/(63+17)
 
-#Ratio of Men correct rate over Women correct rate:
-(97/(97+32))/(63/(63+17))
+
 
 ```
 
 The total accuracy rate is 0.7655502, or about 76.555%. Our model is accurate for most cases, if not all, so this measure of fairness appears to be met. 
 
-Given an allowed $\epsilon$ of 0.05, the difference between the rate of females classified correctly and males classified correctly is within the stated bounds. Thus, the model predicts both men and women with decent all-round accuracy and does not predict one group much better than the other.
+The difference between the rate of females classified correctly and males classified correctly is within reasonable bounds, at only 3.6%. Thus, the model predicts both men and women with decent all-round accuracy and does not predict one group much better than the other.
 
 
 ```{r}
 #Disparate impact:
 
-#Women True Negative/ Predicted Negative
-4/(4+2)
-
-#Men True Negative / # Predicted Negative
-93 / (93+28)
+#P( Predict Survived | man)
+8/129
 
 
-#Women True Positive / # Predicted Positive
-59 / (59+15)
+#P(Predict Survived | woman)
+74/80
 
-#Men True Positive / # Predicted Positive
-4 / (4+4)
+
+#Final Ratio
+
+(8/129)/(74/80)
+
 ```
 
-However, these values indicate that the model possesses potential blind spots for missing male survivors and female fatalities (0.6667 and 0.5 being far below the model average accuracy of 0.7656). This is still difficult to conclude based on our data because of the small amount of the sample who fit into these classifications. We might need to take a multitude of random samples to see if the true positive and true negative rates remain at these levels. 
+For some $\epsilon$ = 0.2, this ratio is far lower than 1-$\epsilon$ = 0.8. Thus, we conclude that we have disparate impact. 
+
 
 
 
 ```{r}
-#Statistical parity
+#Statistical Parity
 
-#Proportion of men predicted to survive
-8/129
+abs((8/129) - (74/80))
+```
+This value of 0.8629845 is far greater than $\epsilon$ = 0.2. Thus, we conclude that we do not have statistical parity.
 
-#Proportion of women predicted to survive
-74/80
+
+```{r}
+#Predictive equality
+
+#False positive rates
+
+#Men:
+4/97
+
+#Women:
+15/19
+
+abs((4/97) - (15/19))
 ```
 
-There is not statistical parity in our model, because predicting 6.2% of men and 92.5% of women to survive indicates a bias for all reasonable values of  $\epsilon$, even raising it from 0.1.
+Since this is above $\epsilon$ = 0.2, we conclude that we do not have predictive equality.
+
+```{r}
+#Equal opportunity
+#True Positive rates
+
+#Men:
+4/32
 
 
-Given that the log(Odds) in the model summary is nonzero with a significant p-value, we have neither predictive equality nor equal opportunity between females and males.
+#Women:
+59/61
+
+abs((4/32) - (59/61))
+
+```
+Since this difference is above $\epsilon$ = 0.2, we conclude that we do not have equal opportunity.
+
 
 
 
@@ -234,5 +260,6 @@ Even so, provide a *philosophical* notion of justice or fairness that may have m
 
 Seeing that men appear to have died more frequently than women, the survivors of the Titanic might have adhered to an archaic verson of John Rawls' Difference Principle. This principle states that where differences exist, resources ought to be allocated to the most vulnerable. Traditionally, saving the women and children before the men was an act of chivalry, implying that men were expected to be less vulnerable and thus obliged to wait for others before making their own ways to safety. 
 
-Clearly, many women are more physcially and mentally able than men, but in 1912 this logic met with more popularity. 
+Clearly, many women are more physically and mentally able than men, but in 1912 this logic inspired by chivalry and chauvinism met with more popularity. Assuming that men are naturally the stronger sex, protecting the "vulnerable" entails protecting women first.
+
 
