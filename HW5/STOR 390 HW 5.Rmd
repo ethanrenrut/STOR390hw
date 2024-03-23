@@ -1,0 +1,27 @@
+---
+title: "STOR 390 HW 5"
+author: "Ethan Turner"
+date: "03/23/2023"
+output:
+  word_document: default
+  html_document:
+    number_sections: yes
+---
+
+This homework is meant to give you practice in creating and defending a position with both statistical and philosophical evidence.  We have now extensively talked about the COMPAS ^[https://www.propublica.org/datastore/dataset/compas-recidivism-risk-score-data-and-analysis] data set, the flaws in applying it but also its potential upside if its shortcomings can be overlooked.  We have also spent time in class verbally assessing positions both for an against applying this data set in real life.  In no more than two pages ^[knit to a pdf to ensure page count] take the persona of a statistical consultant advising a judge as to whether they should include the results of the COMPAS algorithm in their decision making process for granting parole.  
+
+First clearly articulate your position (whether the algorithm should be used or not) and then defend said position using both statistical and philosophical evidence.  Your paper will be grade both on the merits of its persuasive appeal but also the applicability of the statistical and philosohpical evidence cited.  
+
+
+
+
+
+Granting parole frequently offers a shred of leniency to convicts who had their lives altered due to one poor decision. It allows a monitored second chance to criminals who have truly reformed, or at least pose no threat to society. However, the problem of recidivism–that is, offending again–complicates the goal of penal reformation. Legal authorities understandably seek to minimize the probability of prisoners offending again while preserving the parole system, leading to the demand for the COMPAS algorithm cultivated by Northpointe. Despite its assumedly good intentions to encourage more accurate parole-granting decisions, I contend that the COMPAS algorithm should not be used due to its middling accuracy arriving at the cost of unequal treatment along racial lines and lack of algorithmic transparency.
+
+	In theory alone, the COMPAS algorithm appears quite a risk-averse supplemental tool for parole decisions due to its reasonable overall accuracy (68% according to Northpointe). However, when COMPAS diverges from predicting the truth, it does so in a manner that violates various popular guidelines of statistical fairness–specifically disparate impact, statistical parity, and equalized odds. Categorizing by race, for example, COMPAS incorrectly assigns Black inmates to a high risk of recidivism at a significantly higher rate than it does white inmates. This most directly upsets the predictive equality aspect of equalized odds. Furthermore, while Northpointe did not specifically use race in their model, they did introduce proxies such as ZIP codes. Given this information and the concern over differing “false positive rates” (predicting someone will offend again if they did not), COMPAS’s unequal treatment along the lines of race or ethnicity inhibits me from endorsing its usage. 
+ 
+	Northpointe’s refusal to publicize any variable inputted into their algorithm until legally required to do so also provokes normative concern to compound questions over COMPAS’s predictions. In an appeal to virtue ethics, Northpointe’s decision surely violates the pursuit of transparency that humans, especially those making highly important decisions likely to affect large quantities of people, ought to choose. Even if Northpointe introduces COMPAS only as a supplemental tool, I argue that such a tool with largely mysterious origins lacks a justified place in the courtroom. Beyond the decision-making process, each prisoner also ought to understand the factors informing the decision whether to grant them parole. Keeping on with transparency, ensuring greater transparency in the process lessens the susceptibility of the system to targeted abuse of individuals. From a utilitarian perspective, this benefit from making COMPAS more transparent outweighs the highly improbable aptitude of inmates in manufacturing details about themselves and thus “gaming the system”. Thus, through both virtue ethics and basic utilitarian reasoning, I support Northpointe publicizing more details about COMPAS before revisiting its continued usage in the United States. 
+
+	As merely a consultant, I can only advise you based on my own opinion. Despite this limitation, I hope that I have briefly presented my case in a cogent manner. In my view, COMPAS represents a departure from multiple principles that form the United States’ backbone. The responsibility of the legal system to an individual extends beyond the trial to a parole hearing, and any convict is entitled to the full context of a judge, jury, or committee’s decision. Also, the probability of outcome from a legal process should never be demonstrably swayed by uncontrollable characteristics such as race. 
+	
+
